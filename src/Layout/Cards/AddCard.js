@@ -1,1 +1,3 @@
-import CardForm from "./CardForm"
+export default function AddCard(){
+    return null;
+}
