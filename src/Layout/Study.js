@@ -24,14 +24,16 @@ export default function Study() {
     };
   }, [deckId]);
 
+  const deckName = (deck.name !== undefined) ? (`${deck.name}: `) : null 
+
   if (Object.keys(deck).length) {
     return (
       <>
       {/* using the Breadcrumb nav bar*/}
-      <Breadcrumb pathName={`/decks/${deck.id}`} deckName={deck.name} pageName="Study"/>
+      <Breadcrumb pathName={`/decks/${deck.id}`} deckName={deckName} pageName="Study"/>
         {/* title */}
         <div>
-          <h1>{deck.name}: Study</h1>
+          <h1>{deckName}Study</h1>
         </div>
 
         {/* card list */}

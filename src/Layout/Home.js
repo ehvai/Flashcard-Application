@@ -11,13 +11,12 @@ export default function Home({ decks }) {
 
   async function handleDelete(event) {
     event.preventDefault();
-    let deckId = "";
     if (
       window.confirm("Delete this deck?  You will not be able to recover it.")
     ) {
-      window.open((deckId = event.target.value));
+      window.open((event.target.value));
     }
-    await deleteDeck(deckId);
+    await deleteDeck(event.target.value);
     history.push("/");
   }
 
@@ -63,7 +62,7 @@ export default function Home({ decks }) {
       <button
         type="button"
         className="btn btn-secondary btn-lg bit"
-        onClick={() => handleClick("/deck/new")}
+        onClick={() => handleClick("/decks/new")}
       >
         + Create Deck
       </button>
