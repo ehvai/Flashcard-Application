@@ -1,5 +1,7 @@
 
 export default function Deck() {
 
-  return <></>;
+  return <>
+  <h1>Something Random</h1>
+  </>;
 }

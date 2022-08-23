@@ -2,23 +2,24 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 
-export default function Home({decks}) {
-   const history = useHistory();
+export default function Home({ decks }) {
+  const history = useHistory();
 
   function handleClick(path) {
-    history.push({
-        pathname: path,
-        deckId: decks.id
-    });
+    history.push(path);
   }
 
   async function handleDelete(event) {
     event.preventDefault();
-    let deckId = '';
-    if(window.confirm("Delete this deck?  You will not be able to recover it.")){window.open(deckId = event.target.value)}
-    await deleteDeck(deckId)
-    history.push("/")
-}
+    let deckId = "";
+    if (
+      window.confirm("Delete this deck?  You will not be able to recover it.")
+    ) {
+      window.open((deckId = event.target.value));
+    }
+    await deleteDeck(deckId);
+    history.push("/");
+  }
 
   const showDeck = decks.map((deck) => {
     return (
@@ -33,7 +34,7 @@ export default function Home({decks}) {
             <div>
               <button
                 className="btn btn-secondary"
-                onClick={() => handleClick(`/deck/${deck.id}`)}
+                onClick={() => handleClick(`/decks/${deck.id}`)}
               >
                 View
               </button>
@@ -44,14 +45,18 @@ export default function Home({decks}) {
                 Study
               </button>
             </div>
-            <button className="btn btn-danger" onClick={(handleDelete)} value={deck.id}>Delete</button>
+            <button
+              className="btn btn-danger"
+              onClick={handleDelete}
+              value={deck.id}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
     );
   });
-
-  console.log(showDeck);
 
   return (
     <>
