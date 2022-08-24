@@ -53,12 +53,6 @@
       "back": "b",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "Testing to see if a new card is added",
-      "back": "Just checking on a new card!",
-      "deckId": 1,
-      "id": 8
     }
   ]
 }

@@ -1,6 +1,6 @@
 import Breadcrumb from "../Breadcrumb";
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CardForm from "./CardForm";
 import { readDeck, createCard } from "../../utils/api";
 

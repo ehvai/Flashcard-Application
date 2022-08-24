@@ -51,7 +51,7 @@ export default function Deck() {
           >
             Edit
           </Link>
-          <button type="button" className="btn btn-danger" onClick={handleCardDelete}>
+          <button type="button" className="btn btn-danger" onClick={handleCardDelete} value={card.id}>
             Delete
           </button>
         </div>

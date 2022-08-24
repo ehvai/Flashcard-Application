@@ -19,7 +19,8 @@ function Layout() {
 
     async function loadDecks() {
       try {
-        setDecks(await listDecks(abortController.signal));
+        const response=await listDecks(abortController.signal)
+        setDecks(response);
       } catch (error) {
         console.log(error.message);
       }
