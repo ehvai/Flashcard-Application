@@ -1,56 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function DeckForm({
   formName,
-  deckName = "",
-  deckDescription = "",
-  submitFunction,
+  handleSubmit,
+  handleChange,
+  deck,
 }) {
 
-    const [deck, setDeck] = useState({});
-
-  function handleCancel(event) {
-    
-  }
-
-  function handleChange(event) {
-    setDeck({...deck, [event.target.name]: event.target.value})
-  }
-
-    submitFunction(deck);
+const path=(deck.id ? `/decks/${deck.id}` : "/")
 
   return (
     <>
       <h1>{formName}</h1>
-      <form onSubmit={submitFunction}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="cardName">Name</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
+            name="name"
             className="form-control"
-            id="cardName"
-            aria-describedby="cardname"
+            id="name"
+            aria-describedby="name"
             onChange={handleChange}
-            value={deckName}
+            value={deck.name}
+            placeholder="Deck Name"
           />
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
-          <input
-            type="text"
+          <textarea
+            name="description"
             className="form-control"
             id="description"
             onChange={handleChange}
-            value={deckDescription}
+            value={deck.description}
+            placeholder="Description"
           />
         </div>
-        <button
-          type="cancel"
-          className="btn btn-secondary"
-          onClick={handleCancel}
-        >
+        <Link to={path} type="cancel" className="btn btn-secondary">
           Cancel
-        </button>
+        </Link>
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

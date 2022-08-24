@@ -30,9 +30,6 @@ function Layout() {
     };
   }, []);
 
-  function addNewDeck({ newDeck }) {
-    setDecks(...decks, newDeck);
-  }
 
   return (
     <>
@@ -43,7 +40,7 @@ function Layout() {
             <Home decks={decks} />
           </Route>
           <Route path="/decks/new">
-            <CreateDeck addNewDeck={addNewDeck} />
+            <CreateDeck />
           </Route>
           <Route exact path="/decks/:deckId">
             <Deck />
@@ -52,7 +49,7 @@ function Layout() {
             <Study />
           </Route>
           <Route path="/decks/:deckId/edit">
-            <EditDeck decks={decks} />
+            <EditDeck />
           </Route>
           <Route path="/decks/:deckId/cards/new">
             <AddCard />

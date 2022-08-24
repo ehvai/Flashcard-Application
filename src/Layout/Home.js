@@ -12,12 +12,11 @@ export default function Home({ decks }) {
   async function handleDelete(event) {
     event.preventDefault();
     if (
-      window.confirm("Delete this deck?  You will not be able to recover it.")
+      window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
     ) {
-      window.open((event.target.value));
+      window.location.reload(true);
     }
     await deleteDeck(event.target.value);
-    history.push("/");
   }
 
   const showDeck = decks.map((deck) => {
