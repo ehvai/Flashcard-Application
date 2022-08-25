@@ -7,38 +7,18 @@ import EditDeck from "./Decks/EditDeck";
 import Study from "./Study";
 import AddCard from "./Cards/AddCard";
 import EditCard from "./Cards/EditCard";
-import { listDecks } from "../utils/api";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 function Layout() {
-  const [decks, setDecks] = useState([]);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    async function loadDecks() {
-      try {
-        const response=await listDecks(abortController.signal)
-        setDecks(response);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-    loadDecks();
-    return () => {
-      abortController.abort();
-    };
-  }, []);
-
-
+  
   return (
     <React.Fragment>
       <Header />
       <div className="container">
         <Switch>
           <Route exact path="/">
-            <Home decks={decks} />
+            <Home />
           </Route>
           <Route path="/decks/new">
             <CreateDeck />

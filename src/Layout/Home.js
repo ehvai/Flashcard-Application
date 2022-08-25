@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { deleteDeck } from "../utils/api";
+import { deleteDeck, listDecks } from "../utils/api";
 
-export default function Home({ decks }) {
+export default function Home() {
   const history = useHistory();
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function loadDecks() {
+      try {
+        const response=await listDecks(abortController.signal)
+        setDecks(response);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    loadDecks();
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
   function handleClick(path) {
     history.push(path);
@@ -25,7 +43,7 @@ export default function Home({ decks }) {
         <div className="card-body">
           <div className="row justify-content-between">
             <h5 className="card-title">{deck.name}</h5>
-            <h2 style={{ fontSize: "15px" }}>{deck.cards.length} Cards</h2>
+            <h2 style={{ fontSize: "15px" }}>{`${deck.cards.length} cards`}</h2>
           </div>
           <p className="card-text">{deck.description}</p>
           <div className="row justify-content-between">
