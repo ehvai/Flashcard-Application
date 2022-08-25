@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 
+// This component is a child of Study.  This component displays the card component
+// It takes in the list of cards and then returns the individual cards based on the buttons pressed.
+
 function CardList({ cards }) {
   const [side, setSide] = useState(true);
   const [card, setCard] = useState(0);
   const { deckId } = useParams();
   const history = useHistory();
-  //const cards = decks.cards
 
-  // User flips card
+// This function flips the card when pressed  
   const flipHandler = () => {
     setSide(!side);
   };
 
-  // User is on last card, ask to restart or return to homepage
+  // This function works when the user is on last card, ask to restart or return to homepage
   const nextHandler = () => {
     if (card === cards.length - 1) {
       window.confirm("Restart Cards?\n\n Click 'Cancel' to return home")

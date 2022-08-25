@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck, listDecks } from "../utils/api";
 
-export default function Home() {
+// This component sets up the Home page which includes the header and the additional components that follow below.
+
+function Home() {
   const history = useHistory();
   const [decks, setDecks] = useState([]);
 
+  // On load, this pulls in the current deck from the API using the listDecks function
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -23,10 +26,12 @@ export default function Home() {
     };
   }, []);
 
-  function handleClick(path) {
+  // This function takes care of pushing the clicks to their respective locations based on which button was pushed.
+  const handleClick = (path) => {
     history.push(path);
   }
 
+  // This function deletes the card after a warning.  Once it is done, it refreshes the page and shows the decks wtihout the deleted card.
   async function handleDelete(event) {
     event.preventDefault();
     if (
@@ -37,6 +42,7 @@ export default function Home() {
     await deleteDeck(event.target.value);
   }
 
+  // This creates the deck mapped from the decks, so each individual deck has the elements they all need.
   const showDeck = decks.map((deck) => {
     return (
       <div className="card" key={deck.id}>
@@ -74,6 +80,8 @@ export default function Home() {
     );
   });
 
+
+  // This shows the decks on the page, along with the create deck button on top.
   return (
     <React.Fragment>
       <button
@@ -87,3 +95,5 @@ export default function Home() {
     </React.Fragment>
   );
 }
+
+export default Home;

@@ -4,7 +4,10 @@ import DeckForm from "./DeckForm";
 import { createDeck } from "../../utils/api";
 import { useRouteMatch, useHistory } from "react-router-dom";
 
-export default function CreateDeck() {
+// This component creates the deck whenever the button is pressed on the Home
+// It includes the DeckForm component and sends the relevant functions forward
+
+function CreateDeck() {
   const initialNewDeck = {
     name: "",
     description: "",
@@ -18,12 +21,12 @@ export default function CreateDeck() {
     return await createDeck(newDeck, abortController.signal);
   }
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setNewDeck({ ...newDeck, [event.target.name]: event.target.value });
 
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     addNewDeck().then(({ id }) => history.push(`/decks/${id}`));
     setNewDeck({ ...initialNewDeck });
@@ -41,3 +44,5 @@ export default function CreateDeck() {
     </React.Fragment>
   );
 }
+
+export default CreateDeck;

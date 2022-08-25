@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 import CardList from "./Cards/CardList";
 import Breadcrumb from "./Breadcrumb";
 
-export default function Study() {
+// This component has a child component with CardList.  The Study Component handles the deck
+// while it sends the inividual card information to the CardList child component
+// Originally I was going to use the CardList in the Deck view as well, but the Deck view wanted something very different.
+
+function Study() {
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
 
@@ -23,6 +27,10 @@ export default function Study() {
       abortController.abort();
     };
   }, [deckId]);
+
+// This sets the name to make sure that both the breadcrumb has the correct name and the
+// study view has the right information.
+// This is in case someone creates a deck with no name.
 
   const deckName = (deck.name !== undefined) ? (`${deck.name}: `) : null
   const breadName = (deck.name !== undefined) ? deck.name : null
@@ -45,3 +53,5 @@ export default function Study() {
     return null;
   }
 }
+
+export default Study;

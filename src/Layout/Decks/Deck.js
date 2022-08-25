@@ -3,7 +3,10 @@ import Breadcrumb from "../Breadcrumb";
 import { useRouteMatch, useParams, Link } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../../utils/api";
 
-export default function Deck() {
+
+// This component handles the Deck and is where all the decks plus their cards are shown.
+// It includes the deck, the cards, and the relevant buttons for each component.
+function Deck() {
   const { path, url } = useRouteMatch();
   const { deckId } = useParams();
 
@@ -81,7 +84,8 @@ export default function Deck() {
     await deleteCard(event.target.value);
   }
 
-  // The return 
+  // The return sends the data to the breadcrumb including null since for this part
+  // the breadcrumb only shows the Home/DeckName
   return (
     <React.Fragment>
       <Breadcrumb pathName={path} deckName={null} pageName={deck.name} />
@@ -109,3 +113,5 @@ export default function Deck() {
     </React.Fragment>
   );
 }
+
+export default Deck;

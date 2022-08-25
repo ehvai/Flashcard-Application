@@ -10,6 +10,8 @@ import EditCard from "./Cards/EditCard";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
+// This component sets up and defines all the routes.
+
 function Layout() {
   
   return (

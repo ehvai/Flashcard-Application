@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CardForm({
+// This component is the generic form component used by Edit Card and Add Card.
+// It takes in specific criteria avialable to both components and then returns the standardized form.
+
+function CardForm({
   formName,
   handleSubmit,
   handleChange,
   card,
   deckId
 }) {
+
+// As the buttons are different between Edit and Add Card, these two variables change the name accordingly.
+// This lets the component be flexible.
 
 const buttonLink = (formName === "Edit Card") ? "Cancel" : "Done"
 const submitLink = (formName === "Edit Card") ? "Submit" : "Save"
@@ -48,3 +54,5 @@ const submitLink = (formName === "Edit Card") ? "Submit" : "Save"
     </React.Fragment>
   );
 }
+
+export default CardForm;

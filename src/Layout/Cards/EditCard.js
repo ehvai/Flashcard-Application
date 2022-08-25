@@ -4,7 +4,10 @@ import { useParams, useHistory } from "react-router-dom";
 import CardForm from "./CardForm";
 import { readDeck, readCard, updateCard } from "../../utils/api";
 
-export default function EditCard() {
+// This component EditCard uses the CardForm component to display/complete the edits for cards.
+// It has all the functionality while leaving the visual to the CardForm itself.
+
+function EditCard() {
   const [deck, setDeck] = useState([]);
   const { deckId, cardId } = useParams();
   const history=useHistory();
@@ -36,11 +39,14 @@ export default function EditCard() {
     return await updateCard(editCard, abortController.signal);
   }
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setEditCard({ ...editCard, [event.target.name]: event.target.value });
   }
 
-  function handleSubmit(event) {
+
+  // This function calls the updateExistingCard function which uses the updateCard to update the API.
+  // It then sends the user to the appropriate deck and finally resets the EditCard useState so that it can be used again later.
+  const handleSubmit = (event) => {
     event.preventDefault();
     updateExistingCard();
     history.push(`/decks/${deck.id}`)
@@ -66,3 +72,5 @@ export default function EditCard() {
     </React.Fragment>
   );
 }
+
+export default EditCard;

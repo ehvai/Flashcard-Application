@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 import CardForm from "./CardForm";
 import { readDeck, createCard } from "../../utils/api";
 
-export default function AddCard() {
+// This component adds a new card using the functions in AddCard and the form itself from CardForm.
+
+function AddCard() {
   const [deck, setDeck] = useState([]);
   const { deckId } = useParams();
   const initialNewCard = {
@@ -34,11 +36,14 @@ export default function AddCard() {
     return await createCard(deckId, newCard, abortController.signal);
   }
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setNewCard({ ...newCard, [event.target.name]: event.target.value });
   }
 
-  function handleSubmit(event) {
+// This function calls the addNewCard function which performs the creation of the card.
+// It then resets the newCard usestate.  It doesn't send you anywhere in case you want to add more cards.
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     addNewCard();
     setNewCard({ ...initialNewCard });
@@ -62,3 +67,5 @@ export default function AddCard() {
     </React.Fragment>
   );
 }
+
+export default AddCard;

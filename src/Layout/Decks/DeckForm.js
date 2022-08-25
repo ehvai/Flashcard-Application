@@ -1,14 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function DeckForm({
+// This component is a generic form used by both the Create Deck and Edit Deck components.
+// It takes in specific props so that it can be flexible and used for multiple components.
+
+function DeckForm({
   formName,
   handleSubmit,
   handleChange,
   deck,
 }) {
 
+// This variable sets the path so that when the link is clicked it goes to the correct location
+// based on if there is a deck.id - meaning there is a deck being edited - or not.
+
 const path=(deck.id ? `/decks/${deck.id}` : "/")
+
+// This return uses the props sent from Create and Edit deck components so it can be used for either smoothly
 
   return (
     <React.Fragment>
@@ -48,3 +56,5 @@ const path=(deck.id ? `/decks/${deck.id}` : "/")
     </React.Fragment>
   );
 }
+
+export default DeckForm;
