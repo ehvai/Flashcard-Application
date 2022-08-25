@@ -29,7 +29,7 @@ export default function Study() {
 
   if (Object.keys(deck).length) {
     return (
-      <>
+      <React.Fragment>
       {/* using the Breadcrumb nav bar*/}
       <Breadcrumb pathName={`/decks/${deck.id}`} deckName={breadName} pageName="Study"/>
         {/* title */}
@@ -39,7 +39,7 @@ export default function Study() {
 
         {/* card list */}
         <CardList cards={deck.cards} />
-      </>
+      </React.Fragment>
     );
   } else {
     return null;

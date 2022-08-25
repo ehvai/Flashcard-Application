@@ -45,7 +45,7 @@ export default function AddCard() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Breadcrumb
         pathName={`/decks/${deck.id}`}
         deckName={deck.name}
@@ -59,6 +59,6 @@ export default function AddCard() {
         card={newCard}
         deckId={deck.id}
       />
-    </>
+    </React.Fragment>
   );
 }

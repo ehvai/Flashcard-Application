@@ -26,7 +26,7 @@ export default function Deck() {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [deckId]);
 
   // Mapping over the card list to get the list of cards to show and giving them the appropriate JSX
   const cardsList = cards.map((card) => {
@@ -83,7 +83,7 @@ export default function Deck() {
 
   // The return 
   return (
-    <>
+    <React.Fragment>
       <Breadcrumb pathName={path} deckName={null} pageName={deck.name} />
       <h1>{deck.name}</h1>
       <p>{deck.description}</p>
@@ -106,6 +106,6 @@ export default function Deck() {
         </div>
       </div>
       {cardsList}
-    </>
+    </React.Fragment>
   );
 }

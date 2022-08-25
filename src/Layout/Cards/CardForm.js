@@ -12,7 +12,7 @@ export default function CardForm({
 const buttonLink = (formName === "Edit Card") ? "Cancel" : "Done"
 const submitLink = (formName === "Edit Card") ? "Submit" : "Save"
   return (
-    <>
+    <React.Fragment>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Front</label>
@@ -45,6 +45,6 @@ const submitLink = (formName === "Edit Card") ? "Submit" : "Save"
           {submitLink}
         </button>
       </form>
-    </>
+    </React.Fragment>
   );
 }

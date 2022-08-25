@@ -30,7 +30,7 @@ export default function CreateDeck() {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Breadcrumb pathName={path} deckName={null} pageName="Create Deck" />
       <DeckForm
         formName="Create Deck"
@@ -38,6 +38,6 @@ export default function CreateDeck() {
         handleChange={handleChange}
         deck={newDeck}
       />
-    </>
+    </React.Fragment>
   );
 }

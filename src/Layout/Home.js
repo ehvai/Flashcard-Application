@@ -57,15 +57,15 @@ export default function Home({ decks }) {
   });
 
   return (
-    <>
+    <React.Fragment>
       <button
         type="button"
         className="btn btn-secondary btn-lg bit"
         onClick={() => handleClick("/decks/new")}
       >
-        + Create Deck
+        Create Deck
       </button>
       {showDeck}
-    </>
+    </React.Fragment>
   );
 }

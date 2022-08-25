@@ -11,7 +11,7 @@ export default function DeckForm({
 const path=(deck.id ? `/decks/${deck.id}` : "/")
 
   return (
-    <>
+    <React.Fragment>
       <h1>{formName}</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -45,6 +45,6 @@ const path=(deck.id ? `/decks/${deck.id}` : "/")
           Submit
         </button>
       </form>
-    </>
+    </React.Fragment>
   );
 }

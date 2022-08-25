@@ -48,7 +48,7 @@ export default function EditDeck(){
       }
     
       return (
-        <>
+        <React.Fragment>
           <Breadcrumb pathName={path} deckName={editDeck.name} pageName="Edit Deck" />
           <DeckForm
             formName="Edit Deck"
@@ -56,6 +56,6 @@ export default function EditDeck(){
             handleChange={handleChange}
             deck={editDeck}
           />
-        </>
+        </React.Fragment>
       );
 }

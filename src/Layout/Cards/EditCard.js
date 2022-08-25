@@ -1,13 +1,12 @@
 import Breadcrumb from "../Breadcrumb";
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory, useRouteMatch } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import CardForm from "./CardForm";
 import { readDeck, readCard, updateCard } from "../../utils/api";
 
 export default function EditCard() {
   const [deck, setDeck] = useState([]);
   const { deckId, cardId } = useParams();
-  const { url } = useRouteMatch();
   const history=useHistory();
   const initialEditCard = {
     front: "",
@@ -30,7 +29,7 @@ export default function EditCard() {
     return () => {
       abortController.abort();
     };
-  }, [deckId]);
+  }, [deckId, cardId]);
 
   async function updateExistingCard() {
     const abortController = new AbortController();
@@ -50,7 +49,7 @@ export default function EditCard() {
 
 
   return (
-    <>
+    <React.Fragment>
       <Breadcrumb
         pathName={`/decks/${deck.id}`}
         deckName={deck.name}
@@ -64,6 +63,6 @@ export default function EditCard() {
         card={editCard}
         deckId={deck.id}
       />
-    </>
+    </React.Fragment>
   );
 }
